@@ -7,12 +7,10 @@ Create a simple, scalable, and resilient web application deployment pipeline usi
 
 **Requirements:**
 
-
 1. **Application Setup:**
 
    - Develop a basic web application in C# (ASP.NET Core) that displays a simple "Hello, World!" message on the homepage.
-
-
+	> **Note**: A templated ASP.NET Core Web App (MVC) using the .NET 8.0 Framework was choosen for simplicity.
 2. **Containerization:**
 
    - Dockerize the web application, ensuring it can be run as a container.
