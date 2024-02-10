@@ -31,8 +31,8 @@ Create a simple, scalable, and resilient web application deployment pipeline usi
 
    - Ensure the deployment is resilient. Consider using readiness and liveness probes.
 	>**Note**: The following healthchecks were implemented
-	>Readiness Path: /health/ready
-	>Liveness Path: /health/live
+	Readiness Path: /health/ready
+	Liveness Path: /health/live
 
 5. **K8s Cluster**
 
