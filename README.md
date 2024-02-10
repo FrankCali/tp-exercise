@@ -30,8 +30,9 @@ Create a simple, scalable, and resilient web application deployment pipeline usi
    - Create Kubernetes deployment and service YAML files for the web application.
 
    - Ensure the deployment is resilient. Consider using readiness and liveness probes.
-
-
+	> **Note**: The following healthchecks were implemented
+	>Readiness Check Path: /health/ready
+	>Liveness Check Path: /health/live
 
 5. **K8s Cluster**
 
