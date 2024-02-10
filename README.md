@@ -14,7 +14,7 @@ Create a simple, scalable, and resilient web application deployment pipeline usi
 2. **Containerization:**
 
    - Dockerize the web application, ensuring it can be run as a container.
-
+   > **Note**: A templated Dockerfile was generated to containerize the application, which pins to to a specific .NET SDK version, uses multi-stage build to reduce image size, and runs the container under a non root user for security purposes.
 
 3. **CI/CD Pipeline:**
 
@@ -31,8 +31,8 @@ Create a simple, scalable, and resilient web application deployment pipeline usi
 
    - Ensure the deployment is resilient. Consider using readiness and liveness probes.
    > **Note**: The following healthchecks were implemented
-   > Readiness Path: /health/ready
-   > Liveness Path: /health/live
+     Readiness Path: /health/ready
+     Liveness Path: /health/live
 
 5. **K8s Cluster**
 
