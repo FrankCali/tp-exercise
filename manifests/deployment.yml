@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: tpexercisehelloworld 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tpexercisehelloworld
+  template:
+    metadata:
+      labels:
+        app: tpexercisehelloworld 
+    spec:
+      containers:
+        - name: tpexercisehelloworld 
+          image: tpexerciseregistry.azurecr.io/tpexercisehelloworld
+          ports:
+          - containerPort: 8080
