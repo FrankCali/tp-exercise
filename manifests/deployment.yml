@@ -17,6 +17,18 @@ spec:
           image: tpexerciseregistry.azurecr.io/tpexercisehelloworld:latest
           ports:
             - containerPort: 8080
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: 8080
+            initialDelaySeconds: 20
+            periodSeconds: 10
       tolerations:
         - key: "CriticalAddonsOnly"
           operator: "Exists"
