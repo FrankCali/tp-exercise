@@ -17,13 +17,13 @@ spec:
           preferredDuringSchedulingIgnoredDuringExecution:
             - weight: 100
               podAffinityTerm:
-                - labelSelector:
-                    matchExpressions:
-                      - key: app
-                        operator: In
-                        values:
-                          - tpexercisehelloworld
-                  topologyKey: "kubernetes.io/hostname"
+                labelSelector:
+                  matchExpressions:
+                    - key: app
+                      operator: In
+                      values:
+                        - tpexercisehelloworld
+                topologyKey: "kubernetes.io/hostname"
       containers:
         - name: tpexercisehelloworld
           image: tpexerciseregistry.azurecr.io/tpexercisehelloworld:latest
