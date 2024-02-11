@@ -12,11 +12,30 @@ spec:
       labels:
         app: tpexercisehelloworld
     spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                - labelSelector:
+                    matchExpressions:
+                      - key: app
+                        operator: In
+                        values:
+                          - tpexercisehelloworld
+                  topologyKey: "kubernetes.io/hostname"
       containers:
         - name: tpexercisehelloworld
           image: tpexerciseregistry.azurecr.io/tpexercisehelloworld:latest
           ports:
             - containerPort: 8080
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "256Mi"
           livenessProbe:
             httpGet:
               path: /health/live
