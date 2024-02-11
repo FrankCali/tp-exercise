@@ -1,7 +1,7 @@
-apiVersion : apps/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tpexercisehelloworld 
+  name: tpexercisehelloworld
 spec:
   replicas: 1
   selector:
@@ -10,10 +10,13 @@ spec:
   template:
     metadata:
       labels:
-        app: tpexercisehelloworld 
+        app: tpexercisehelloworld
     spec:
       containers:
-        - name: tpexercisehelloworld 
-          image: tpexerciseregistry.azurecr.io/tpexercisehelloworld
+        - name: tpexercisehelloworld
+          image: tpexerciseregistry.azurecr.io/tpexercisehelloworld:11
           ports:
-          - containerPort: 8080
+            - containerPort: 8080
+      tolerations:
+        - key: "CriticalAddonsOnly"
+          operator: "Exists"
