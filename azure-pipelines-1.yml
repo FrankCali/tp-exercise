@@ -68,6 +68,8 @@ stages:
               manifests: |
                 $(Pipeline.Workspace)/manifests/deployment.yml
                 $(Pipeline.Workspace)/manifests/service.yml
+                $(Pipeline.Workspace)/manifests/horizontalpodautoscaler.yml
+                $(Pipeline.Workspace)/manifests/poddisruptionbudget.yml               
               imagePullSecrets: |
                 $(imagePullSecret)
               containers: |
