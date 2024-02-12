@@ -23,38 +23,25 @@ Create a simple, scalable, and resilient web application deployment pipeline usi
    - The CI process should trigger on every commit to the main branch.
 
    - The CD process should deploy the latest Docker image to a Kubernetes cluster hosted on Azure (AKS).
-
+    > **Note**: A CI/CD pipeline for Azure Devops was created and ran(ci-cd-aks-deploy-pipleine.yml). The pipeline is triggered on any code changes pushed to the main branch where the docker image is built, stored in an ACR registry and then deploys the 'latest' image to the AKS cluster.
 
 4. **Kubernetes Deployment:**
 
    - Create Kubernetes deployment and service YAML files for the web application.
-
+   > **Note**: A 'manifests' folder was created in the root directory that contains all the kubernetes files that were created for this deployment.
    - Ensure the deployment is resilient. Consider using readiness and liveness probes.
-   > **Note**: The following healthchecks were implemented
-     Readiness Path: /health/ready
-     Liveness Path: /health/live
+   > **Note**: In order to create a more scalable and resilient deployment, readiness(health/ready) and liveness(/health/live) probes were implemented, resource requests/limits were set, replica count was set to 2, pod anti-affinity to schedule pods to seperate nodes, horizontal pod auto scaling was configured, along with a pod disruption budget was applied.
+
 
 5. **K8s Cluster**
 
 - Stand up an aks cluster and deploy to it using everything from the above steps.
 
 - If there are concerns about the costs of this, please let me know and we can work something out.
-
-
-6. **Documentation:**
-
-   - Provide a README file with detailed instructions on how to set up and run the pipeline, including any prerequisites.
-
-   - Document any assumptions you've made and choices in your deployment strategy.
+> **Note**: The AKS cluster was setup with the 'Free' SKU, and was setup with 3 availability zones in order to help with implementation of application resilency tactics.
 
 
 
-**Deliverables:**
 
-- Source code for the web application and Dockerfile.
 
-- YAML files for Kubernetes deployment and service.
 
-- Azure DevOps pipeline definitions (YAML or via the Azure DevOps UI, with export if applicable).
-
-- A README file with setup and deployment instructions.
