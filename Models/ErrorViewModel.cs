@@ -6,6 +6,5 @@ namespace HelloWorld.Models
 
         public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
 
-        public bool test {get;set}
     }
 }
