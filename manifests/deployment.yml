@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: tpexercisehelloworld
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: tpexercisehelloworld
