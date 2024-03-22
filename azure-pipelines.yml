@@ -6,9 +6,9 @@ trigger:
   branches:
     include:
       - main
-  # paths:
-  #   include:
-  #     - 'src/WebApps/HibuSalesTool/**'
+  paths:
+    include:
+      - 'src/WebApps/HibuSalesTool/**'
 
 resources:
 - repo: self
