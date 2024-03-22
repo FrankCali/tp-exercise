@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tpexercisehelloworld
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: tpexercisehelloworld
+  template:
+    metadata:
+      labels:
+        app: tpexercisehelloworld
+    spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: app
+                      operator: In
+                      values:
+                        - tpexercisehelloworld
+                topologyKey: "kubernetes.io/hostname"
+      containers:
+        - name: tpexercisehelloworld
+          image: tpexerciseregistry.azurecr.io/tpexercisehelloworld:latest
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "32Mi"
+            limits:
+              cpu: "500m"
+              memory: "64Mi"
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: 8080
+            initialDelaySeconds: 20
+            periodSeconds: 10
+      tolerations:
+        - key: "CriticalAddonsOnly"
+          operator: "Exists"
