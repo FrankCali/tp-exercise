@@ -8,9 +8,7 @@ trigger:
       - main
   paths:
     include:
-      - 'manifests/**'
-    exclude:
-      - '*/*'
+      - 'src/manifests/**'
 
 resources:
 - repo: self
